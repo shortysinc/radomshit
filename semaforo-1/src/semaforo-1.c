@@ -23,7 +23,7 @@ main(int argc, char *argv [])
 	key_t llave;
 
 	//Peticion de un identificador con dos semanforos
-
+	//argv[0]="prueba";
 	llave= ftok(argv[0], 'K');
 	if ((semid=semget(llave,2, IPC_CREAT | 0600))==-1)
 	{
