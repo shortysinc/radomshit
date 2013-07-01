@@ -4,7 +4,7 @@
  Author      : Jorge Shortys
  Version     :
  Copyright   : 
- Description : Hello World in C, Ansi-style
+ Description : Uso del fork()
  ============================================================================
  */
 
@@ -28,15 +28,15 @@ main()
 		while(i<10)
 		{
 			sleep(1);
-			printf("\t\t El fork vale: %d\n", fk);
-			printf("\t\t Soy el proceso hijo: %d\n", i++);
+			//printf("\t\t El fork vale: %d\n", fk);
+			printf("\t\t Soy el proceso hijo: %d y fork vale-> %d\n", i++, fk);
 			break;
 		}
 	default: //PADRE
 		while(i<10)
 		{
 			//printf("\t\t El fork vale: %d\n", fk);
-			printf("Soy el proceso padre: %d\n", i++);
+			printf("Soy el proceso padre: %d y fork vale-> %d\n", i++);
 			sleep(2);
 		}
 	};
