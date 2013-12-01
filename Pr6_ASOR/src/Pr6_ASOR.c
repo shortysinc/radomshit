@@ -36,15 +36,16 @@ int main()
 	    uidmalo=setuid(1000);
 //	    printf("%d\n", uidmalo);
 	    if (uidmalo==-1)
-	    	printf("No existe el usuario con UID: %d\n", 1001);
+	    	printf("No existe el usuario con UID: %d\n", 1000);
 	    else
 	    {
 	       	printf("Real UID\t= %d\n", getuid());
 	    	printf("Effective UID\t= %d\n", geteuid());
 	    }
+
 	    setuid(1001);
 	    uidmalo=setuid(1001);
-//	    printf("%d\n", uidmalo);
+ 	    printf("%d\n", uidmalo);
 
 	    if (uidmalo==-1)
 	    {
