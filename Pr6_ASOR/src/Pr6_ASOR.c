@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <errno.h>
 
 //Vars
 int setuid(uid_t uid);
@@ -41,11 +42,15 @@ int main()
 	       	printf("Real UID\t= %d\n", getuid());
 	    	printf("Effective UID\t= %d\n", geteuid());
 	    }
-	    setuid(117);
-	    uidmalo=setuid(117);
-	    printf("%d\n", uidmalo);
+	    setuid(1001);
+	    uidmalo=setuid(1001);
+//	    printf("%d\n", uidmalo);
+
 	    if (uidmalo==-1)
-	    	printf("No existe el usuario con UID: %d\n", 117);
+	    {
+	    	printf("No existe el usuario con UID: %d\n", 1001);
+
+	    }
 	    else
 	    {
 	    	printf("Real UID\t= %d\n", getuid());
