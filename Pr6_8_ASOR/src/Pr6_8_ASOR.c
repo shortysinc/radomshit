@@ -24,6 +24,6 @@ int main()
 	printf("El id de usuario actual es %d\n",getuid());
 	printf("El id efectivo de usuario actual es %d\n",geteuid());
 	printf("El id real del grupe es %d\n",getgid());
-//	printf("El id efectivo de usuario actual es %d",get);
+	printf("El id efectivo de usuario actual es %d", getpwuid());
 	return 1;
 }
