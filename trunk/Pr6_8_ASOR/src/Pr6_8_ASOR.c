@@ -1,16 +1,20 @@
 /*
  ============================================================================
  Name        : Pr6_7_ASOR.c
- Author      : 
- Version     :
- Copyright   : 
- Description : Hello World in C, Ansi-style
+ Ejercicio 1. El comando del sistema id(1) muestra la información de
+ usuario real y efectiva.
+ Consultar la página de manual y comprobar el funcionamiento del comando.
  ============================================================================
  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
 
-int main(void) {
 
+int main()
+{
+	printf("El id de",);
+	return 1;
 }
