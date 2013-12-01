@@ -23,6 +23,7 @@ int main(void)
 	printf("El numero maximo de hijos es %ld\n", sysconf(_SC_CHILD_MAX));
 	printf("El numero maximo de ficheros es %ld\n", sysconf(_SC_OPEN_MAX));
 
-	printf("El numero maximo de enlaces de / es %ld\n ", pathconf("/",_PC_LINK_MAX));
+	printf("El numero maximo de enlaces de / es %ld\n", pathconf("/",_PC_LINK_MAX));
+	printf("El numero maximo de enlaces de / es %ld\n", pathconf("/",_PC_PATH_MAX));
 	return 1;
 }
