@@ -1,10 +1,8 @@
 /*
  ============================================================================
  Name        : Pr6_ASOR.c
- Author      : 
- Version     :
- Copyright   : 
- Description : Hello World in C, Ansi-style
+ Author      : Jorge
+ Description :
  ============================================================================
  */
 
@@ -17,7 +15,7 @@
 int setuid(uid_t uid);
 uid_t getuid(void);
 uid_t geteuid(void);
-int pepe;
+uid_t pepe, uidmalo;
 
 /*
 	Ejercicio 1. Añadir el código necesario para gestionar correctamente los errores generados por la
@@ -25,26 +23,36 @@ int pepe;
 	prototipo.
 */
 
-int main() {
-//	printf("Mehhhhhhhhh");
-//	return EXIT_SUCCESS;
-		setuid(0);
-	    printf("Real UID\t= %d\n", getuid());
+int main()
+{
+	    setuid(0);
+	    printf("%d\n", setuid(0));
+		printf("Real UID\t= %d\n", getuid());
 	    printf("Effective UID\t= %d\n", geteuid());
-	    printf("Real GID\t= %d\n", getgid());
-	    printf("Effective GID\t= %d\n", getegid());
 
-	    setuid(1001);
-	    printf("Real UID\t= %d\n", getuid());
-	    printf("Effective UID\t= %d\n", geteuid());
-	    printf("Real GID\t= %d\n", getgid());
-	    printf("Effective GID\t= %d\n", getegid());
+	    setuid(1000);
+//	    printf("%d\n", setuid(1000));
+	    uidmalo=setuid(1000);
+//	    printf("%d\n", uidmalo);
+	    if (uidmalo==-1)
+	    	printf("No existe el usuario con UID: %d\n", 1001);
+	    else
+	    {
+	       	printf("Real UID\t= %d\n", getuid());
+	    	printf("Effective UID\t= %d\n", geteuid());
+	    }
+	    setuid(117);
+	    uidmalo=setuid(117);
+	    printf("%d\n", uidmalo);
+	    if (uidmalo==-1)
+	    	printf("No existe el usuario con UID: %d\n", 117);
+	    else
+	    {
+	    	printf("Real UID\t= %d\n", getuid());
+	    	printf("Effective UID\t= %d\n", geteuid());
+	    }
 
-	    setuid(80);
-	    printf("Real UID\t= %d\n", getuid());
-	    printf("Effective UID\t= %d\n", geteuid());
-	    printf("Real GID\t= %d\n", getgid());
-	    printf("Effective GID\t= %d\n", getegid());
+
 	    return 1;
 
 }
