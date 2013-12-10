@@ -19,7 +19,7 @@ int main()
 //	//printf("Major: %d\n", major);
 //	printf("Dispositivo : major=%ld  minor=%ld\n",(long) major(sb->st_dev), (long) minor(sb->st_dev));
 //	printf("I-node number: %ld\n", (long) sb->st_ino);
-	if (stat("/home/jorge/ninio", &sb) == -1)
+	if (stat("/home/jorge/pepe", &sb) == -1)
 	{
 		perror("stat");
 		exit(EXIT_FAILURE);
@@ -39,7 +39,8 @@ int main()
 	default:       printf("unknown?\n");                break;
 	}
 
-	printf("Dispositivo : major=%ld  minor=%ld\n",(long) major(sb.st_dev), (long) minor(sb.st_dev));
+	printf("Major y Minor(dispositivo): Major=%ld  Minor=%ld\n",
+		  (long) major(sb.st_dev), (long) minor(sb.st_dev));
 	printf("I-node number:            %ld\n", (long) sb.st_ino);
 
 	printf("Last status change:       %s", ctime(&sb.st_ctime));
