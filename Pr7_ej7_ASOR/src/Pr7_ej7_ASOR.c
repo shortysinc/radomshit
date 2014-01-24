@@ -15,7 +15,7 @@ Ejercicio 7. Escribir un programa que emule el comportamiento del comando stat y
 int main()
 {
 	struct stat sb;
-	if (stat("/", &sb) == -1)
+	if (stat("/home/usuario_vms/bitch", &sb) == -1)
 	{
 		perror("stat");
 		exit(EXIT_FAILURE);
@@ -25,7 +25,8 @@ int main()
 	printf("Major y Minor(dispositivo): Major=%ld  Minor=%ld\n",
 		  (long) major(sb.st_dev), (long) minor(sb.st_dev));
 	printf("Tipo de archivo:                ");
-
+	// Se hace la AND del modo con la máscara S_IFMT para ver el tipo de fichero
+	// switch para comprobarlo...
 	switch (sb.st_mode & S_IFMT) {
 	case S_IFBLK:  printf("block device\n");            break;
 	case S_IFCHR:  printf("character device\n");        break;
