@@ -19,7 +19,8 @@ Comprobar el resultado con el comando ls. rw--w--wx
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
-
+// En shell, el valor de umask se crea poniendo a 1 los flags que se quieren capar.
+// Ej umask = 027 es lo mismo que umask u=rwx,g=rwx,o=
 int main()
 {
 	mode_t oldmask = umask((mode_t) 0);
