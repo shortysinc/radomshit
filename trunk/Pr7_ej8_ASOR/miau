@@ -1,0 +1,9 @@
+total 36
+drwxr-xr-x 4 usuario_vms users  4096 ene 30 13:04 .
+drwxr-xr-x 5 usuario_vms users  4096 ene 30 12:22 ..
+-rw-r--r-- 1 usuario_vms users 11380 ene 30 12:06 .cproject
+drwxr-xr-x 3 usuario_vms users  4096 ene 30 13:10 Debug
+-rw-r----- 1 usuario_vms users     0 ene 30 13:10 miau
+-rw-r----- 1 usuario_vms users    57 ene 30 13:02 out
+-rw-r--r-- 1 usuario_vms users   764 ene 30 12:06 .project
+drwxr-xr-x 2 usuario_vms users  4096 ene 30 13:00 src
