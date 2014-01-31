@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 	            close(des_p[0]);   //closing pipe read
 	            close(des_p[1]);
 
-	            const char* prog1[] = { "echo", "123456", 0};
+	            const char* prog1[] = { argv [1], argv[2], 0};
 	            execvp(prog1[0], prog1);
 	            perror("execvp of ls failed");
 	            exit(1);
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 	            close(des_p[1]);   //closing pipe write
 	            close(des_p[0]);
 
-	            const char* prog2[] = { "wc", "-c", 0};
+	            const char* prog2[] = { argv [3], argv [4], 0};
 	            execvp(prog2[0], prog2);
 	            perror("execvp of wc failed");
 	            exit(1);
