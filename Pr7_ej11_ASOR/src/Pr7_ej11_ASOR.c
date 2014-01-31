@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 {
 	int n;
 	struct stat sbuf;
-	DIR *directorio;
+	//DIR *dir;
 	//Si no se pasa argumento, por defecto es null. Con lo cual argc = 1.
 	//printf("%d\n",argc);
 	if (argc <2 ) {
@@ -74,6 +74,7 @@ int main(int argc, char **argv)
 
 	}
 
+	/*--------------------------PRUEBA-----------------------------------*/
 
 
 	return 0;
