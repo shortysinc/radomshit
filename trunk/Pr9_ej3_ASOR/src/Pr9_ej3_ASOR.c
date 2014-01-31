@@ -17,7 +17,7 @@ tubería usando un comando adecuado.
 int main()
 {
 	system ("rm /home/usuario_vms/tuberia1");
-	system ("rm /home/usuario_vms/tuberia2");
+	system ("rm /home/usuario_vms/tuberia2"); // Para la pregunta de si se pueden crear 2 pipes
 	//int result;
 
 	int lol1 = mkfifo("/home/usuario_vms/tuberia1", 0666);
