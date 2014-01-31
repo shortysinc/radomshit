@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	int n;
 	struct stat sbuf;
 	//Si no se pasa argumento, por defecto es null. Con lo cual argc = 1.
-	printf("%d\n",argc);
+	//printf("%d\n",argc);
 	if (argc <2 ) {
 		printf("me estas vacilando hijo de puta?\n");
 		exit(-1);
@@ -36,12 +36,14 @@ int main(int argc, char **argv)
 		if( lstat( argv[n], &sbuf ) == -1 )
 			perror( argv[n] );
 
+		//Con esta estructura comprueba directamente la correcion de la ruta para ver si es un directorio
+		//o si es otra cosa. No hace falta parsearlo caracter a caracter.
 		else if( S_ISDIR( sbuf.st_mode ) ) {
-			printf( "%s is a dir\n", argv[n] );
+			printf( "%s is a directory \n", argv[n] );
 
 		}
 		else {
-			printf( "%s is not a dir\n", argv[n] );
+			printf( "%s is not a directory \n", argv[n] );
 		}
 	}
 
