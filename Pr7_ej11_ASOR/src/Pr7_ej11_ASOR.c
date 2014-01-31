@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 	}
 
 	//Este bucle for comprueba si lo que le hemos pasado es un directorio
+
 	for( n = 1; n < argc; ++n ) {
 		if( lstat( argv[n], &sbuf ) == -1 )
 			perror( argv[n] );
