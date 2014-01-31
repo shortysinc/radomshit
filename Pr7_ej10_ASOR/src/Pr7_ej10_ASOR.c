@@ -30,8 +30,8 @@ int main()
 	printf ("Locking...\n");
 	/* Initialize the flock structure. */
 	memset (&lock, 0, sizeof(lock));
-	lock.l_type=F_UNLCK; // Aquí se mete el bloqueo
-//	lock.l_type=F_WRLCK;
+//	lock.l_type=F_UNLCK; // Aquí se mete el bloqueo
+	lock.l_type=F_WRLCK;
 	lock.l_start=0;
 	lock.l_len=0;
 	lock.l_whence= SEEK_SET;
@@ -43,16 +43,21 @@ int main()
 //		exit(1);
 //	}
 
-	int locked = fcntl(fd, F_GETLK,&lock); // Con F_GETLK devuelve el pid del proceso que lo bloquea, supuestamente
+	int locked = 0;
+	locked=fcntl(fd, F_GETLK,&lock); // Con F_GETLK devuelve el pid del proceso que lo bloquea, supuestamente
 	printf("Locked= %d\n", locked);
 	if(locked != -1){
 		printf("Está to pillao");
 	}
 	else{
-		lock.l_type= F_WRLCK;
+		lock.l_type= F_WRLCK;//Bloqueo el cerrojo
+		locked=fcntl(fd, F_GETLK,&lock);//compruebo que se ha bloqueado
+		printf("Locked= %d\n", locked);//devuelvo el valor del bloqueo
 		printf("the time is %s", ctime(&ltime));
-		sleep (30);
+		sleep (1);
 		lock.l_type= F_UNLCK;
+		locked=fcntl(fd, F_GETLK,&lock);
+		printf("Locked= %d\n", locked);
 		}
 
 	return 0;
