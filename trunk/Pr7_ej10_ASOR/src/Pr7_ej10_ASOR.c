@@ -14,13 +14,15 @@ El programa no deberá modificar el contenido del fichero si no tiene el cerrojo
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
-
+#include <time.h>
 
 int main()
 {
 	char* file= "/home/usuario_vms/bitch";
 	int fd;
 	struct flock lock;
+	time_t ltime;
+	time(&ltime);
 
 	printf ("Opening %s\n", file);
 	/* Open a file descriptor to the file. */
@@ -28,8 +30,8 @@ int main()
 	printf ("Locking...\n");
 	/* Initialize the flock structure. */
 	memset (&lock, 0, sizeof(lock));
-	//lock.l_type=F_UNLCK; // Aquí se mete el bloqueo
-	lock.l_type=F_WRLCK;
+	lock.l_type=F_UNLCK; // Aquí se mete el bloqueo
+//	lock.l_type=F_WRLCK;
 	lock.l_start=0;
 	lock.l_len=0;
 	lock.l_whence= SEEK_SET;
@@ -41,14 +43,17 @@ int main()
 //		exit(1);
 //	}
 
-	int locked = fcntl(fd, F_GETLK,&lock);
+	int locked = fcntl(fd, F_GETLK,&lock); // Con F_GETLK devuelve el pid del proceso que lo bloquea, supuestamente
 	printf("Locked= %d\n", locked);
 	if(locked != -1){
 		printf("Está to pillao");
 	}
 	else{
-		printf("Está to libre");
-	}
+		lock.l_type= F_WRLCK;
+		printf("the time is %s", ctime(&ltime));
+		sleep (30);
+		lock.l_type= F_UNLCK;
+		}
 
 	return 0;
 }
