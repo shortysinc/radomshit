@@ -19,10 +19,17 @@
 #include <fcntl.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <libgen.h>
+#include <sys/types.h>
+#include <dirent.h>
+
+
+
 int main(int argc, char **argv)
 {
 	int n;
 	struct stat sbuf;
+	DIR *directorio;
 	//Si no se pasa argumento, por defecto es null. Con lo cual argc = 1.
 	//printf("%d\n",argc);
 	if (argc <2 ) {
@@ -45,6 +52,26 @@ int main(int argc, char **argv)
 		else {
 			printf( "%s is not a directory \n", argv[n] );
 		}
+	}
+	/*
+	 ○ Si es un fichero normal escribirá el nombre.
+     ○ Si es un directorio escribirá el nombre seguido del carácter ‘/’
+     ○ Si es un enlace simbólico escribirá el nombre seguido de ‘-><fichero al que apunta>’.
+	   Usar la función readlink(2), dimensionar adecuadamente el buffer de la función.
+     ○ Si el fichero es ejecutable escribirá el nombre seguido del carácter ‘*’
+	 */
+
+	switch (sbuf.st_mode & S_IFMT)
+	{
+		case S_IFREG:  printf("Fichero Normal: %s\n", basename(argv[1]));	break;
+		case S_IFDIR:  printf("directory\n");               break;
+		case S_IFLNK:  printf("symlink\n");                 break;
+		default:       printf("unknown?\n");                break;
+		//case S_IFBLK:  printf("block device\n");            break;
+		//case S_IFCHR:  printf("character device\n");        break;
+		//case S_IFIFO:  printf("FIFO/pipe\n");               break;
+		//case S_IFSOCK: printf("socket\n");                  break;
+
 	}
 
 
