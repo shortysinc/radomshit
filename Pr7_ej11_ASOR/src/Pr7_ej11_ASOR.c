@@ -2,7 +2,7 @@
  * ---------------ls extendido--------------------: popopo
  * Escribir un programa que cumpla las siguientes especificaciones:
     ● El programa tiene un único argumento que es la ruta a un directorio. El programa debe
-         comprobar la corrección del argumento.
+         comprobar la corrección del argumento. HECHO!
     ● El programa recorrerá las entradas del directorio de forma que:
              ○ Si es un fichero normal escribirá el nombre.
              ○ Si es un directorio escribirá el nombre seguido del carácter ‘/’
